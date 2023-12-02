@@ -6,14 +6,10 @@ result
     for (let i = 0; i < ele.length; i++) {
       const div = document.createElement("div");
       div.className = "container";
-      const h1 = document.createElement("h1");
-      h1.className = "text-center";
-      h1.id = "title";
-      h1.innerText = "Rest Countries Name";
       div.innerHTML = `<div class="row">
-       <div class="col col-lg-4 col-sm-12">
+      <div class="col col-lg-3 col-sm-12">
          <div class="card">
-         <div class="card-header">${ele[i].name.common}</div>
+         <div class="card-header">${ele[i].name.common} </div>
            <img src="${ele[i].flags.png}" class="card-img-top" alt="country-flag">
            <div class="card-body">
              <p class="card-text"><b><i>Capital: ${ele[i].capital}</i></b></p>
@@ -23,16 +19,23 @@ result
              <p class="card-text"><b><i>NativeName: ${ele[i].name.official}</i></b></p>
              <p class="card-text"><b><i>Country Code: ${ele[i].cca3}</i></b></p>
              <button class="btn btn-primary" onclick="getWeatherData('${ele[i].name.common}')">Click for Weather</button>
+  
              </div>
            </div>
          </div>
        </div>`;
-      div.appendChild(h1);
+
       document.body.append(div);
     }
+    const h1 = document.createElement("h1");
+      h1.className = "text-center";
+      h1.id = "title";
+      h1.color="red";
+      h1.innerText = "Rest Countries Name";
+      document.body.append(h1);
+
   });
 function getWeatherData(countryName) {
-  // Use restCountryName in your fetch request to get weather data.
   var apiKey = "eebfc7ad50c4a39e555028ff4aee7c38";
   var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${apiKey}`;
 
